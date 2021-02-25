@@ -1,0 +1,70 @@
+<div style="
+	width:70%;
+	margin:50px auto;
+	font-size:1.5em;
+">
+Tenemos una cabaña en La Hayuela, en una finca a la que no llega la red eléctrica, en la que queremos alimentar un frigorífico de 100 W, y 6 luminarias de 50 W que no suelen estar encendidas más de 3 horas cada noche. La cocina y la calefacción la resolvemos con leña. ¿Qué características mínimas deberían cumplir los elementos de la instalación solar fotovoltaica si queremos que las baterías no se descarguen más del 50%? Utiliza este <a href=https://re.jrc.ec.europa.eu/pvg_tools/es/#PVP target=_blank>enlace</a> para calcular la potencia generada por los paneles BP-275
+<div id="r" style="
+	background-color:pink;
+	margin:50px 0;
+	padding:20px;
+"></div>
+
+<div>
+
+<script>
+i_panel = 4.45;
+panel = 4.54e3/30; 			// wh diario por panel
+consumo = 100*24 + 6*50*3; 	// consumo diario
+pot_pico = 100+6*50;		// potencia pico
+prof_descarga = .5;
+dias_lluvia = 13;
+
+i_panel = 4.45;
+panel = 4.54e3/30; 			// wh diario por panel
+consumo = 0*100*24 + 6*50*3; 	// consumo diario
+pot_pico = 0*100+6*50;		// potencia pico
+prof_descarga = .5;
+dias_lluvia = 13;
+
+consumo = 10*24 + 3*50*4; 	// consumo diario
+pot_pico = 10+6*50;		// potencia pico
+i_panel = 4.45;
+panel = 4.54e3/30; 			// wh diario por panel
+prof_descarga = .5;
+dias_lluvia = 13;
+
+consumo = 20*24 + 3*50*4; 	// consumo diario
+pot_pico = 20+6*50;		// potencia pico
+i_panel = 4.45;
+panel = 4.54e3/30; 			// wh diario por panel
+prof_descarga = .5;
+dias_lluvia = 13;
+
+consumo = 25*24 + 3*50*4; 	// consumo diario
+pot_pico = 25+6*50;		// potencia pico
+i_panel = 4.45;
+panel = 4.54e3/30; 			// wh diario por panel
+prof_descarga = .5;
+dias_lluvia = 13;
+
+consumo = 100*24 + 5*50*3; 	// consumo diario
+pot_pico = 100+5*50;		// potencia pico
+i_panel = 4.75;
+panel = 4.32e3/30; 			// wh diario por panel
+prof_descarga = .6;
+dias_lluvia = 13;
+
+n_paneles=Math.ceil( consumo/panel );
+capacidad = Math.ceil(consumo/prof_descarga/12/((30-13)/30)/50)*50;
+i_paneles= Math.ceil(n_paneles * i_panel/10)*10;
+
+txt='';
+txt+='<div>paneles : '+n_paneles+' paneles </div>';
+txt+='<div>corriente regulador : '+i_paneles+' A y 17 V</div>';
+txt+='<div>baterías : '+capacidad+' Ah de capacidad </div>';
+txt+='<div>potencia inversor : '+pot_pico+' W </div>';
+txt+='<div>consumo : '+consumo+' Wh/día </div>';
+
+document.getElementById('r').innerHTML=txt;
+</script>
